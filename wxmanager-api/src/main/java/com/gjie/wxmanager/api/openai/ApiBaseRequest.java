@@ -1,4 +1,4 @@
-package com.gjie.wxmanager.api;
+package com.gjie.wxmanager.api.openai;
 
 import org.springframework.http.HttpHeaders;
 

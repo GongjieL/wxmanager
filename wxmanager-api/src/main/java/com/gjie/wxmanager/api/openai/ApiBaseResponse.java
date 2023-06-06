@@ -1,4 +1,4 @@
-package com.gjie.wxmanager.api;
+package com.gjie.wxmanager.api.openai;
 
 public class ApiBaseResponse<T> {
     private String code = "200";

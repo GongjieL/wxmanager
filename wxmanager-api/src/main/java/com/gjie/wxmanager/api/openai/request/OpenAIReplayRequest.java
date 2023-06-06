@@ -1,6 +1,6 @@
 package com.gjie.wxmanager.api.openai.request;
 
-import com.gjie.wxmanager.api.ApiBaseRequest;
+import com.gjie.wxmanager.api.openai.ApiBaseRequest;
 import com.gjie.wxmanager.api.openai.bo.OpenAIReplayParam;
 import org.springframework.http.HttpHeaders;
 

@@ -2,7 +2,6 @@ package com.gjie.wxmanager.api.openai;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.gjie.wxmanager.api.ApiBaseRequest;
 import com.gjie.wxmanager.api.openai.request.OpenAIAuthRequest;
 import com.gjie.wxmanager.api.openai.request.OpenAIReplayRequest;
 import com.gjie.wxmanager.api.openai.response.OpenAiAuthResponse;
@@ -15,8 +14,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
-import java.net.URISyntaxException;
 
 @Service
 public class OpenApiHttp {
