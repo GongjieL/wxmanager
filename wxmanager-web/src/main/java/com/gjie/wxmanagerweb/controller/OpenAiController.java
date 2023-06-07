@@ -4,6 +4,7 @@ import com.gjie.wxmanagercommon.request.BaseRequest;
 import com.gjie.wxmanagercommon.response.BaseResponse;
 import com.gjie.wxmanagercommon.service.OpenAiService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
