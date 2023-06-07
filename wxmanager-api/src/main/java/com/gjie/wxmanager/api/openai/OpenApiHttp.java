@@ -1,10 +1,11 @@
 package com.gjie.wxmanager.api.openai;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.gjie.wxmanager.api.openai.request.OpenAIAuthRequest;
+import com.gjie.wxmanager.api.openai.request.OpenAIGenerateImageRequest;
 import com.gjie.wxmanager.api.openai.request.OpenAIReplayRequest;
-import com.gjie.wxmanager.api.openai.response.OpenAiAuthResponse;
+import com.gjie.wxmanager.api.openai.response.OpenAiGenerateImageResponse;
 import com.gjie.wxmanager.api.openai.response.OpenAiReplayResponse;
 import com.gjie.wxmanagerutil.config.OpenApiEnum;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.ArrayList;
 
 @Service
 public class OpenApiHttp {
@@ -47,19 +50,16 @@ public class OpenApiHttp {
     }
 
 
-    public OpenAiAuthResponse getOpenAiAuthResult(OpenAIAuthRequest request) {
-        request.getHeaders().add("OpenAI-Organization", openAiOrganization);
+    public OpenAiGenerateImageResponse generateImage(OpenAIGenerateImageRequest request) {
         request.getHeaders().add("Authorization", openAiAuthToken);
-        OpenAiAuthResponse response = new OpenAiAuthResponse();
+        OpenAiGenerateImageResponse response = new OpenAiGenerateImageResponse();
         try {
             ResponseEntity openAiResponse = getOpenAiResponse(request);
-            boolean success = !openAiResponse.getBody().toString().contains("error");
-            if (success) {
-                response.setData(true);
-            } else {
-                response.setSuccess(false);
-                response.setCode("500");
-                response.setMessage("噢！我好像坏掉了!!");
+            JSONObject apiResponse = JSON.parseObject(openAiResponse.getBody().toString());
+            JSONArray data = apiResponse.getJSONArray("data");
+            response.setData(new ArrayList<>());
+            for (Object datum : data) {
+                response.getData().add(((JSONObject)datum).getString("url"));
             }
             return response;
         } catch (Exception e) {

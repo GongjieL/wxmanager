@@ -2,5 +2,7 @@ package com.gjie.wxmanager.api.openai.response;
 
 import com.gjie.wxmanager.api.openai.ApiBaseResponse;
 
-public class OpenAiAuthResponse extends ApiBaseResponse<Boolean> {
+import java.util.List;
+
+public class OpenAiGenerateImageResponse extends ApiBaseResponse<List<String>> {
 }

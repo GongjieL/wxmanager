@@ -1,8 +1,8 @@
 package com.gjie.wxmanagerutil.config;
 
 public enum OpenApiEnum {
-    OPEN_AI_AUTH(0001, "get", "https://api.openai.com/v1/models"),
-    OPEN_AI_GET_REPLAY(0002, "post", "https://api.openai.com/v1/chat/completions"),
+    OPEN_AI_GET_REPLAY(0001, "post", "https://api.openai.com/v1/chat/completions"),
+    OPEN_AI_GENERATE_IMAGES(0002, "post", "https://api.openai.com/v1/images/generations"),
     ;
 
 

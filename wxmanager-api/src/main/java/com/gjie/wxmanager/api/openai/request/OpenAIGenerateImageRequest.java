@@ -1,19 +1,16 @@
 package com.gjie.wxmanager.api.openai.request;
 
 import com.gjie.wxmanager.api.openai.ApiBaseRequest;
-import com.gjie.wxmanager.api.openai.bo.OpenAIReplayParam;
+import com.gjie.wxmanager.api.openai.bo.OpenAiGenerateImageParam;
 import org.springframework.http.HttpHeaders;
 
-public class OpenAIReplayRequest extends ApiBaseRequest<OpenAIReplayParam> {
-
-
-
+public class OpenAIGenerateImageRequest extends ApiBaseRequest<OpenAiGenerateImageParam> {
 
 
     {
         headers = new HttpHeaders();
         headers.add("Content-Type", "application/json");
-        setRequestCode(001);
+        setRequestCode(002);
     }
 
 

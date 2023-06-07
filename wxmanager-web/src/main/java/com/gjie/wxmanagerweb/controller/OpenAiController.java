@@ -6,6 +6,8 @@ import com.gjie.wxmanagercommon.service.OpenAiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/openai")
 public class OpenAiController {
@@ -23,4 +25,12 @@ public class OpenAiController {
     public BaseResponse<String> getReplay(@RequestBody BaseRequest<String> request) {
         return openAiService.getReplay(request);
     }
+
+
+    @RequestMapping("/generateImg")
+    public BaseResponse<List<String>> generateImg(@RequestBody BaseRequest<String> request) {
+        return openAiService.generateImg(request);
+    }
+
+
 }
