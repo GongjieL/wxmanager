@@ -16,15 +16,20 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Properties;
 
 @Service
 public class OpenApiHttp {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Value("${OpenAI-Authorization}")
-    private String openAiAuthToken;
+//    @Value("${OpenAI-Authorization}")
+//    private String openAiAuthToken;
 
     @Value("${OpenAI-Organization}")
     private String openAiOrganization;
@@ -51,18 +56,19 @@ public class OpenApiHttp {
 
 
     public OpenAiGenerateImageResponse generateImage(OpenAIGenerateImageRequest request) {
-        request.getHeaders().add("Authorization", openAiAuthToken);
         OpenAiGenerateImageResponse response = new OpenAiGenerateImageResponse();
         try {
+            request.getHeaders().add("Authorization", "Bearer "+getOpenAiSecretKey());
             ResponseEntity openAiResponse = getOpenAiResponse(request);
             JSONObject apiResponse = JSON.parseObject(openAiResponse.getBody().toString());
             JSONArray data = apiResponse.getJSONArray("data");
             response.setData(new ArrayList<>());
             for (Object datum : data) {
-                response.getData().add(((JSONObject)datum).getString("url"));
+                response.getData().add(((JSONObject) datum).getString("url"));
             }
             return response;
         } catch (Exception e) {
+            e.printStackTrace();
             response.setSuccess(false);
             response.setCode("500");
             response.setMessage("噢！我好像坏掉了!!");
@@ -71,9 +77,9 @@ public class OpenApiHttp {
     }
 
     public OpenAiReplayResponse getOpenAiReplayResult(OpenAIReplayRequest request) {
-        request.getHeaders().add("Authorization", openAiAuthToken);
         OpenAiReplayResponse response = new OpenAiReplayResponse();
         try {
+            request.getHeaders().add("Authorization", "Bearer "+getOpenAiSecretKey());
             ResponseEntity openAiResponse = getOpenAiResponse(request);
             JSONObject message = (JSONObject) (JSON.parseObject(openAiResponse.getBody().toString()).getJSONArray("choices").get(0));
             response.setData(message.getJSONObject("message").getString("content"));
@@ -93,5 +99,17 @@ public class OpenApiHttp {
         }
         return JSON.toJSONString(paramData);
     }
+
+
+    private String getOpenAiSecretKey() throws IOException {
+        String projectPath = System.getProperty("user.dir");
+        InputStream inputStream = new FileInputStream(projectPath+ File.separator + "openai.properties");
+        Properties properties = new Properties();
+        properties.load(inputStream);
+        String openaiKey = properties.getProperty("openaiKey");
+        inputStream.close();
+        return openaiKey;
+    }
+
 
 }
