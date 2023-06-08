@@ -7,7 +7,7 @@ import com.gjie.wxmanager.api.openai.request.OpenAIGenerateImageRequest;
 import com.gjie.wxmanager.api.openai.request.OpenAIReplayRequest;
 import com.gjie.wxmanager.api.openai.response.OpenAiGenerateImageResponse;
 import com.gjie.wxmanager.api.openai.response.OpenAiReplayResponse;
-import com.gjie.wxmanagerutil.config.OpenApiEnum;
+import com.gjie.wxmanager.util.config.OpenApiEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;

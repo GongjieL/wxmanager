@@ -1,4 +1,4 @@
-package com.gjie.wxmanagercommon.request;
+package com.gjie.wxmanager.common.request;
 
 public class BaseRequest<T> {
     private String token;

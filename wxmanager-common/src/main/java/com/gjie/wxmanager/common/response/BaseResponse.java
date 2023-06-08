@@ -1,4 +1,4 @@
-package com.gjie.wxmanagercommon.response;
+package com.gjie.wxmanager.common.response;
 
 public class BaseResponse<T> {
     private String code;

@@ -1,4 +1,4 @@
-package com.gjie.wxmanagercommon.service;
+package com.gjie.wxmanager.common.service;
 
 import com.gjie.wxmanager.api.openai.OpenApiHttp;
 import com.gjie.wxmanager.api.openai.bo.OpenAIReplayMessage;
@@ -8,8 +8,8 @@ import com.gjie.wxmanager.api.openai.request.OpenAIGenerateImageRequest;
 import com.gjie.wxmanager.api.openai.request.OpenAIReplayRequest;
 import com.gjie.wxmanager.api.openai.response.OpenAiGenerateImageResponse;
 import com.gjie.wxmanager.api.openai.response.OpenAiReplayResponse;
-import com.gjie.wxmanagercommon.request.BaseRequest;
-import com.gjie.wxmanagercommon.response.BaseResponse;
+import com.gjie.wxmanager.common.request.BaseRequest;
+import com.gjie.wxmanager.common.response.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

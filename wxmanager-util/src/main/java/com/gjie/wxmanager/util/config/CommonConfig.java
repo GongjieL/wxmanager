@@ -1,4 +1,4 @@
-package com.gjie.wxmanagerutil.config;
+package com.gjie.wxmanager.util.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

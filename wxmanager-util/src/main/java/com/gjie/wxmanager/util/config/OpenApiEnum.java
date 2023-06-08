@@ -1,4 +1,4 @@
-package com.gjie.wxmanagerutil.config;
+package com.gjie.wxmanager.util.config;
 
 public enum OpenApiEnum {
     OPEN_AI_GET_REPLAY(0001, "post", "https://api.openai.com/v1/chat/completions"),
