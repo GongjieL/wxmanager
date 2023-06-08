@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Mapper
 public interface OperateLogMapper extends BaseMapper<OperateLog> {
-    @Select("select max(updated_time)as updated_time,params,user_id,response from operate_log  group by params order by updated_time desc limit ${size}")
+    @Select("select max(updated_time)as updated_time,params,user_id,response from operate_log where path='CHAT' group by params order by updated_time desc limit ${size}")
     public List<OperateLog> listLatestChatAiResponses(@Param("size") Integer size);
 }
 
