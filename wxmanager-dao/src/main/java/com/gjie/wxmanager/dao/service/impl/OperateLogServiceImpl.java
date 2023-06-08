@@ -6,6 +6,8 @@ import com.gjie.wxmanager.dao.service.OperateLogService;
 import com.gjie.wxmanager.dao.mapper.OperateLogMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author gongjie
  * @description 针对表【operate_log】的数据库操作Service实现
@@ -14,6 +16,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class OperateLogServiceImpl extends ServiceImpl<OperateLogMapper, OperateLog>
         implements OperateLogService {
+    public List<OperateLog> listLatestChatAiResponses(Integer size) {
+        return baseMapper.listLatestChatAiResponses(size);
+    }
 
 }
 

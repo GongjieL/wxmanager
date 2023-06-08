@@ -1,5 +1,6 @@
 package com.gjie.wxmanager.web.controller;
 
+import com.gjie.wxmanager.common.bo.ChatAiInfo;
 import com.gjie.wxmanager.common.request.BaseRequest;
 import com.gjie.wxmanager.common.response.BaseResponse;
 import com.gjie.wxmanager.common.service.OpenAiService;
@@ -39,9 +40,15 @@ public class OpenAiController {
     }
 
 
-    @RequestMapping("/generateImg")
+    @PostMapping("/generateImg")
     public BaseResponse<List<String>> generateImg(@RequestBody BaseRequest<String> request) {
         return openAiService.generateImg(request);
+    }
+
+
+    @GetMapping("/listLatestChatAiResponse")
+    public BaseResponse<List<ChatAiInfo>> listLatestChatAiResponses(@RequestParam Integer size) {
+        return openAiService.listLatestChatAiResponses(size);
     }
 
 
