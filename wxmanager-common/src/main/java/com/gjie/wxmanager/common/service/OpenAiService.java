@@ -8,6 +8,7 @@ import com.gjie.wxmanager.api.openai.request.OpenAIGenerateImageRequest;
 import com.gjie.wxmanager.api.openai.request.OpenAIReplayRequest;
 import com.gjie.wxmanager.api.openai.response.OpenAiGenerateImageResponse;
 import com.gjie.wxmanager.api.openai.response.OpenAiReplayResponse;
+import com.gjie.wxmanager.common.constants.enums.ResponseEnum;
 import com.gjie.wxmanager.common.request.BaseRequest;
 import com.gjie.wxmanager.common.response.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,14 +36,15 @@ public class OpenAiService {
     private OpenApiHttp openApiHttp;
 
     public BaseResponse<Boolean> auth() {
+        //授权
 //        OpenAIAuthRequest aiAuthRequest = new OpenAIAuthRequest();
 //        OpenAiAuthResponse openAiAuthResult = openApiHttp.getOpenAiAuthResult(aiAuthRequest);
-        BaseResponse<Boolean> response = new BaseResponse<>();
-        response.setCode("200");
-        response.setSuccess(true);
-        response.setMsg(null);
-        response.setData(true);
-        return response;
+        return BaseResponse.<Boolean>builder()
+                .code(ResponseEnum.SUCCESS.getCode())
+                .success(true)
+                .data(true)
+                .build();
+
     }
 
     public BaseResponse<String> getReplay(BaseRequest<String> request) {
@@ -58,7 +60,7 @@ public class OpenAiService {
         OpenAIReplayRequest aiReplayRequest = new OpenAIReplayRequest();
         aiReplayRequest.setParamData(paramData);
         OpenAiReplayResponse openAiReplayResponse = openApiHttp.getOpenAiReplayResult(aiReplayRequest);
-        BaseResponse<String> response = new BaseResponse<>();
+        BaseResponse<String> response = new BaseResponse<String>();
         response.setCode(openAiReplayResponse.getCode());
         response.setSuccess(openAiReplayResponse.getSuccess());
         response.setMsg(openAiReplayResponse.getMessage());

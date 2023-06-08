@@ -3,6 +3,10 @@ package com.gjie.wxmanager.web.controller;
 import com.gjie.wxmanager.common.request.BaseRequest;
 import com.gjie.wxmanager.common.response.BaseResponse;
 import com.gjie.wxmanager.common.service.OpenAiService;
+import com.gjie.wxmanager.dao.domain.OperateLog;
+import com.gjie.wxmanager.dao.mapper.OperateLogMapper;
+import com.gjie.wxmanager.dao.service.OperateLogService;
+import com.gjie.wxmanager.dao.service.impl.OperateLogServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,9 +19,17 @@ public class OpenAiController {
     @Autowired
     private OpenAiService openAiService;
 
+    @Autowired
+    private OperateLogServiceImpl operateLogService;
+
+    @Autowired
+    private OperateLogMapper operateLogMapper;
+
 
     @RequestMapping("/auth")
     public BaseResponse<Boolean> auth() {
+        OperateLog byId = operateLogService.getById(1);
+
         return openAiService.auth();
     }
 
