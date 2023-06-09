@@ -6,7 +6,7 @@ public class OpenAiGenerateImageParam {
     //图片个数
     private Integer n=1;
     //图片大小
-    private String size="512x512";
+    private String size="1024x1024";
 
     public String getPrompt() {
         return prompt;

@@ -68,6 +68,18 @@ public class OpenAiService {
 
     }
 
+
+    public BaseResponse<String> getLocalReplay(BaseRequest<String> request) {
+        String requestData = request.getRequestData();
+        String responseFromDb = getResponseFromDb(requestData);
+        return BaseResponse.<String>builder()
+                .data(responseFromDb)
+                .success(true)
+                .code(ResponseEnum.SUCCESS.getCode())
+                .build();
+
+    }
+
     public BaseResponse<String> getReplay(BaseRequest<String> request) {
         //暂时不进行记录
         String requestData = request.getRequestData();

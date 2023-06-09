@@ -39,6 +39,12 @@ public class OpenAiController {
         return openAiService.getReplay(request);
     }
 
+    @PostMapping("/getLocalReplay")
+    public BaseResponse<String> getLocalReplay(@RequestBody BaseRequest<String> request) {
+        return openAiService.getLocalReplay(request);
+    }
+
+
 
     @PostMapping("/generateImg")
     public BaseResponse<List<String>> generateImg(@RequestBody BaseRequest<String> request) {
